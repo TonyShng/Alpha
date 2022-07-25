@@ -2,7 +2,7 @@
 //  BaseWebViewController.swift
 //  AlphaProject
 //
-//  Created by a on 2022/7/23.
+//  Created by a on 2022/7/25.
 //
 
 import UIKit
@@ -50,20 +50,20 @@ class BaseWebViewController: BaseViewController {
         
         self.navigationItem.leftBarButtonItems = [backItem, closeItem]
         
-//        closeItem.rx.tap.subscribe {[weak self] (_) in
-//                self?.navigationController?.popViewController(animated: true)
-//            }
-//            .disposed(by: disposeBag)
-//
-//        backItem.rx.tap.subscribe {[weak self] (_) in
-//                guard let self = self else { return }
-//                if self.dwkWebView.canGoBack {
-//                    self.dwkWebView.goBack()
-//                } else {
-//                    self.navigationController?.popViewController(animated: true)
-//                }
-//            }
-//            .disposed(by: disposeBag)
+        closeItem.rx.tap.subscribe {[weak self] (_) in
+                self?.navigationController?.popViewController(animated: true)
+            }
+            .disposed(by: disposeBag)
+
+        backItem.rx.tap.subscribe {[weak self] (_) in
+                guard let self = self else { return }
+                if self.dwkWebView.canGoBack {
+                    self.dwkWebView.goBack()
+                } else {
+                    self.navigationController?.popViewController(animated: true)
+                }
+            }
+            .disposed(by: disposeBag)
     }
     
     override func setupUI() {
@@ -93,17 +93,17 @@ class BaseWebViewController: BaseViewController {
     }
     
     override func setupConstraints() {
-//        dwkWebView.snp.makeConstraints {
-//            $0.left.right.bottom.equalToSuperview()
-//            $0.top.equalTo(showNavBar ? Screen.navigationBarHeight : 0)
-//        }
-//
-//        if showProgress {
-//            progressView.snp.makeConstraints {
-//                $0.left.right.top.equalTo((dwkWebView))
-//                $0.height.equalTo(6)
-//            }
-//        }
+        dwkWebView.snp.makeConstraints {
+            $0.left.right.bottom.equalToSuperview()
+            $0.top.equalTo(showNavBar ? Screen.navigationBarHeight : 0)
+        }
+        
+        if showProgress {
+            progressView.snp.makeConstraints {
+                $0.left.right.top.equalTo((dwkWebView))
+                $0.height.equalTo(4)
+            }
+        }
     }
     
     private lazy var dwkWebView: DWKWebView = {

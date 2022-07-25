@@ -2,17 +2,16 @@
 //  BaseNavigationController.swift
 //  AlphaProject
 //
-//  Created by a on 2022/7/23.
+//  Created by a on 2022/7/25.
 //
 
 import UIKit
 
 class BaseNavigationController: UINavigationController, UIGestureRecognizerDelegate {
-
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return self.topViewController?.preferredStatusBarStyle ?? .default
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.interactivePopGestureRecognizer?.delegate = self
@@ -30,5 +29,4 @@ class BaseNavigationController: UINavigationController, UIGestureRecognizerDeleg
         }
         super.pushViewController(viewController, animated: animated)
     }
-
 }

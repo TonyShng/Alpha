@@ -39,6 +39,7 @@ class BaseViewController: UIViewController {
         super.viewDidLoad()
         // 导航栏 isTranslucent 为 false 导致布局偏移问题
         self.extendedLayoutIncludesOpaqueBars = true
+        self.navBarBgAlpha = 1.0
         self.view.backgroundColor = .designKit.background
         
         setupUI()
@@ -55,6 +56,8 @@ class BaseViewController: UIViewController {
             self.navBarTintColor = .designKit.tertiaryBackground
             self.navTitleColor = .designKit.tertiaryBackground
             self.navShadowHidden = false
+        } else {
+            self.navigationController?.setNavigationBarHidden(true, animated: animated)
         }
         setNeedsStatusBarAppearanceUpdate()
     }

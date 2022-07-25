@@ -45,8 +45,8 @@ class BaseTabBarController: UITabBarController {
         }
         child.tabBarItem.title = title
         child.tabBarItem.image = normalImage?.withRenderingMode(.alwaysOriginal)
-        child.tabBarItem.selectedImage = selectedImage?.withRenderingMode(.alwaysOriginal)
-        let navController = BaseNavigationController(rootViewController: child)
-        addChild(navController)
+//        child.tabBarItem.selectedImage = selectedImage?.withRenderingMode(.alwaysOriginal)
+//        let navController = BaseNavigationController(rootViewController: child)
+//        addChild(navController)
     }
 }

@@ -26,6 +26,8 @@
 		0057297B288E6A22008A4DC0 /* DemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0057297A288E6A22008A4DC0 /* DemoViewController.swift */; };
 		0057297D288E6A60008A4DC0 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0057297C288E6A60008A4DC0 /* BaseTableViewCell.swift */; };
 		0057297F288E6A9F008A4DC0 /* DemoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0057297E288E6A9F008A4DC0 /* DemoCell.swift */; };
+		0057298228912E7A008A4DC0 /* AnalysisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0057298128912E7A008A4DC0 /* AnalysisViewController.swift */; };
+		00572984289134A4008A4DC0 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00572983289134A4008A4DC0 /* Service.swift */; };
 		009E6600288B79AE00549C5A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009E65FF288B79AE00549C5A /* AppDelegate.swift */; };
 		009E6609288B79B100549C5A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 009E6608288B79B100549C5A /* Assets.xcassets */; };
 		009E660C288B79B100549C5A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 009E660A288B79B100549C5A /* LaunchScreen.storyboard */; };
@@ -53,6 +55,8 @@
 		0057297A288E6A22008A4DC0 /* DemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoViewController.swift; sourceTree = "<group>"; };
 		0057297C288E6A60008A4DC0 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		0057297E288E6A9F008A4DC0 /* DemoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoCell.swift; sourceTree = "<group>"; };
+		0057298128912E7A008A4DC0 /* AnalysisViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalysisViewController.swift; sourceTree = "<group>"; };
+		00572983289134A4008A4DC0 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		009E65FC288B79AE00549C5A /* AlphaProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AlphaProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		009E65FF288B79AE00549C5A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		009E6608288B79B100549C5A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -207,8 +211,10 @@
 			isa = PBXGroup;
 			children = (
 				009E6614288BC0E900549C5A /* MainViewController.swift */,
+				0057298128912E7A008A4DC0 /* AnalysisViewController.swift */,
 				0057297A288E6A22008A4DC0 /* DemoViewController.swift */,
 				0057297E288E6A9F008A4DC0 /* DemoCell.swift */,
+				00572983289134A4008A4DC0 /* Service.swift */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -372,6 +378,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				003143A6288BD016005AF9BA /* UIColor+Palette.swift in Sources */,
+				00572984289134A4008A4DC0 /* Service.swift in Sources */,
 				003143AA288BD06A005AF9BA /* BaseTabBarController.swift in Sources */,
 				003143AF288BD11B005AF9BA /* UIView+ManualLayout.swift in Sources */,
 				003143B1288BD146005AF9BA /* CALayer+ManualLayout.swift in Sources */,
@@ -385,6 +392,7 @@
 				00572972288E43A9008A4DC0 /* BaseNavigationController.swift in Sources */,
 				003143A2288BCF83005AF9BA /* Spacing.swift in Sources */,
 				003143BB288BD2D9005AF9BA /* CGRect+ManualLayout.swift in Sources */,
+				0057298228912E7A008A4DC0 /* AnalysisViewController.swift in Sources */,
 				0031439C288BCD81005AF9BA /* BaseViewController.swift in Sources */,
 				0031439F288BCDED005AF9BA /* Logger.swift in Sources */,
 				003143B9288BD236005AF9BA /* NavBarTransparent.swift in Sources */,
@@ -534,8 +542,14 @@
 				DEVELOPMENT_TEAM = 722UDCY8PL;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AlphaProject/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = ToonMe;
+				INFOPLIST_KEY_NSCameraUsageDescription = "ToonMe请求访问您的摄像头";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "ToonMe请求访问您的麦克风";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "ToonMe 请求保存图片到相册";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "ToonMe请求访问您的相册";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = armv7;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -564,8 +578,14 @@
 				DEVELOPMENT_TEAM = 722UDCY8PL;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AlphaProject/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = ToonMe;
+				INFOPLIST_KEY_NSCameraUsageDescription = "ToonMe请求访问您的摄像头";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "ToonMe请求访问您的麦克风";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "ToonMe 请求保存图片到相册";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "ToonMe请求访问您的相册";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = armv7;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

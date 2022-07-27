@@ -58,7 +58,7 @@ def tool_pods
   # PhotoBrowser
   pod 'JXPhotoBrowser', '~> 3.1.3'
   # PhotoPicker
-  pod 'YPImagePicker', '~> 4.5.0'
+  pod 'ZLPhotoBrowser', '~> 4.3.5'
   # Touch Text
   pod 'ActiveLabel', '~> 1.1.0'
   # Refresh Loading

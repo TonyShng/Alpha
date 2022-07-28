@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Moya
+import SwiftyJSON
 
 class AnalysisViewController: BaseViewController {
     
@@ -49,9 +51,12 @@ class AnalysisViewController: BaseViewController {
     }
     
     override func bindEvent() {
-//        button.rx.tap.subscribe {
-//            
-//        }
+        button.rx.tap.subscribe { [weak self] _ in
+            guard let self = self else { return }
+            networkRequest(MyService.dealImage(image: self.image, type: self.type), modelType: DealImageModel.self) { dealImageModel, _ in
+                log.info(dealImageModel.image ?? "1234")
+            }
+        }.disposed(by: disposeBag)
     }
     
     private let imageView: UIImageView = configure(.init()) {

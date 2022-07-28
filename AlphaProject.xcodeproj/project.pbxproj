@@ -28,6 +28,8 @@
 		0057297F288E6A9F008A4DC0 /* DemoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0057297E288E6A9F008A4DC0 /* DemoCell.swift */; };
 		0057298228912E7A008A4DC0 /* AnalysisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0057298128912E7A008A4DC0 /* AnalysisViewController.swift */; };
 		00572984289134A4008A4DC0 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00572983289134A4008A4DC0 /* Service.swift */; };
+		005729872892131C008A4DC0 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005729862892131C008A4DC0 /* NetworkManager.swift */; };
+		0057298E28926156008A4DC0 /* DealImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0057298D28926156008A4DC0 /* DealImageModel.swift */; };
 		009E6600288B79AE00549C5A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009E65FF288B79AE00549C5A /* AppDelegate.swift */; };
 		009E6609288B79B100549C5A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 009E6608288B79B100549C5A /* Assets.xcassets */; };
 		009E660C288B79B100549C5A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 009E660A288B79B100549C5A /* LaunchScreen.storyboard */; };
@@ -57,6 +59,8 @@
 		0057297E288E6A9F008A4DC0 /* DemoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoCell.swift; sourceTree = "<group>"; };
 		0057298128912E7A008A4DC0 /* AnalysisViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalysisViewController.swift; sourceTree = "<group>"; };
 		00572983289134A4008A4DC0 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		005729862892131C008A4DC0 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		0057298D28926156008A4DC0 /* DealImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealImageModel.swift; sourceTree = "<group>"; };
 		009E65FC288B79AE00549C5A /* AlphaProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AlphaProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		009E65FF288B79AE00549C5A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		009E6608288B79B100549C5A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -165,6 +169,41 @@
 			path = Function;
 			sourceTree = "<group>";
 		};
+		005729852892129B008A4DC0 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				005729862892131C008A4DC0 /* NetworkManager.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		00572988289260A8008A4DC0 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				009E6614288BC0E900549C5A /* MainViewController.swift */,
+				0057298128912E7A008A4DC0 /* AnalysisViewController.swift */,
+				0057297A288E6A22008A4DC0 /* DemoViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		00572989289260B0008A4DC0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0057297E288E6A9F008A4DC0 /* DemoCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0057298A289260B4008A4DC0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				00572983289134A4008A4DC0 /* Service.swift */,
+				0057298D28926156008A4DC0 /* DealImageModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		009E65F3288B79AD00549C5A = {
 			isa = PBXGroup;
 			children = (
@@ -189,6 +228,7 @@
 				009E6618288BC3D200549C5A /* Application */,
 				0031439A288BCD54005AF9BA /* Base */,
 				009E6617288BC3C500549C5A /* Modules */,
+				005729852892129B008A4DC0 /* Services */,
 				0031439D288BCDBD005AF9BA /* Tools */,
 				003143B6288BD1E2005AF9BA /* Utils */,
 				003143A0288BCF62005AF9BA /* DesignKit */,
@@ -210,11 +250,9 @@
 		009E6617288BC3C500549C5A /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				009E6614288BC0E900549C5A /* MainViewController.swift */,
-				0057298128912E7A008A4DC0 /* AnalysisViewController.swift */,
-				0057297A288E6A22008A4DC0 /* DemoViewController.swift */,
-				0057297E288E6A9F008A4DC0 /* DemoCell.swift */,
-				00572983289134A4008A4DC0 /* Service.swift */,
+				0057298A289260B4008A4DC0 /* Model */,
+				00572989289260B0008A4DC0 /* View */,
+				00572988289260A8008A4DC0 /* Controller */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -380,6 +418,7 @@
 				003143A6288BD016005AF9BA /* UIColor+Palette.swift in Sources */,
 				00572984289134A4008A4DC0 /* Service.swift in Sources */,
 				003143AA288BD06A005AF9BA /* BaseTabBarController.swift in Sources */,
+				0057298E28926156008A4DC0 /* DealImageModel.swift in Sources */,
 				003143AF288BD11B005AF9BA /* UIView+ManualLayout.swift in Sources */,
 				003143B1288BD146005AF9BA /* CALayer+ManualLayout.swift in Sources */,
 				00572976288E65F6008A4DC0 /* BaseTableViewController.swift in Sources */,
@@ -389,6 +428,7 @@
 				0057297D288E6A60008A4DC0 /* BaseTableViewCell.swift in Sources */,
 				003143BD288BD2FC005AF9BA /* HelperFunctions.swift in Sources */,
 				00572979288E664E008A4DC0 /* Founctions.swift in Sources */,
+				005729872892131C008A4DC0 /* NetworkManager.swift in Sources */,
 				00572972288E43A9008A4DC0 /* BaseNavigationController.swift in Sources */,
 				003143A2288BCF83005AF9BA /* Spacing.swift in Sources */,
 				003143BB288BD2D9005AF9BA /* CGRect+ManualLayout.swift in Sources */,

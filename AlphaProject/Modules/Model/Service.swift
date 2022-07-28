@@ -45,9 +45,8 @@ extension MyService: TargetType {
                                                        name: "file",
                                                        fileName: fileName,
                                                        mimeType: "image/jpeg")
-        return .uploadMultipart([formData])
+        return .uploadCompositeMultipart([formData], urlParameters: ["cartoon_type": "classic_cartoon"])
         }
-        
     }
     
     var headers: [String : String]? {

@@ -12,6 +12,7 @@ import ObjectMapper
 import SwiftyJSON
 import SystemConfiguration
 import SwiftyUserDefaults
+import SwiftUI
 
 // 超时时长
 private var requestTimeOut: Double = 30
@@ -58,7 +59,6 @@ private let requestClosure = { (endpoint: Endpoint, done: MoyaProvider.RequestRe
         if let header = request.allHTTPHeaderFields {
             log.debug("请求头内容\(header)")
         }
-        
         done(.success(request))
     } catch {
         done(.failure(MoyaError.underlying(error, nil)))
@@ -69,7 +69,7 @@ private let networkPlugin = NetworkActivityPlugin.init { changeType, _ in
     log.debug("networkPlugin \(changeType)")
     switch changeType {
     case .began:
-        log.debug("开始请求网络")
+        ProgressHUD.show(nil, interaction: false)
     case .ended:
         log.debug("结束")
     }
@@ -95,7 +95,7 @@ func networkRequest<T: Mappable>(_ target: TargetType,
         if let model = T(JSONString: responseModel.data) {
             successCallback(model, responseModel)
         } else {
-            errorHandler(code: responseModel.status, message: "解析失败", needShowFailAlert: needShowFailAlert, failure: failureCallback)
+            errorHandler(code: responseModel.status, message: "Parse failure", needShowFailAlert: needShowFailAlert, failure: failureCallback)
         }
     }, failureCallback: failureCallback)
 }
@@ -118,7 +118,7 @@ func networkRequest<T: Mappable>(_ target: TargetType,
         if let model = [T](JSONString: responseModel.data) {
             successCallback(model, responseModel)
         } else {
-            errorHandler(code: responseModel.status, message: "解析失败", needShowFailAlert: needShowFailAlert, failure: failureCallback)
+            errorHandler(code: responseModel.status, message: "Parse failure", needShowFailAlert: needShowFailAlert, failure: failureCallback)
         }
     }, failureCallback: failureCallback)
 }
@@ -136,7 +136,7 @@ func networkRequest(_ target: TargetType,
                     successCallback:@escaping RequestCallback,
                     failureCallback: RequestCallback? = nil) -> Cancellable? {
     if !UIDevice.isNetworkConnect {
-        errorHandler(code: 9999, message: "网络似乎出现了问题", needShowFailAlert: needShowFailAlert, failure: failureCallback)
+        errorHandler(code: 9999, message: "There seems to be a problem with the network", needShowFailAlert: needShowFailAlert, failure: failureCallback)
         return nil
     }
     return provider.request(MultiTarget(target)) { result in
@@ -151,6 +151,7 @@ func networkRequest(_ target: TargetType,
                 respModel.message = jsonData[responseMessageKey].stringValue
                 
                 if respModel.status == successCode {
+                    ProgressHUD.showSuccess("Success", image: nil, interaction: false)
                     respModel.data = jsonData[responseDataKey].rawString() ?? ""
                     successCallback(respModel)
                 } else {
@@ -160,7 +161,7 @@ func networkRequest(_ target: TargetType,
                 errorHandler(code: 10000, message: String(data: response.data, encoding: String.Encoding.utf8)!, needShowFailAlert: needShowFailAlert, failure: failureCallback)
             }
         case let .failure(error as NSError):
-            errorHandler(code: error.code, message: "网络连接失败", needShowFailAlert: needShowFailAlert, failure: failureCallback)
+            errorHandler(code: error.code, message: "Network connection failure", needShowFailAlert: needShowFailAlert, failure: failureCallback)
         }
     }
 }
@@ -176,6 +177,7 @@ private func errorHandler(code: Int, message: String, needShowFailAlert: Bool, f
     model.message = message
     if needShowFailAlert {
         log.error("弹出错误信息弹框\(message)")
+        ProgressHUD.showError(message, image: nil, interaction: false)
     }
     failure?(model)
 }

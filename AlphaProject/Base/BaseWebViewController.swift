@@ -31,6 +31,7 @@ class BaseWebViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // customLeftNavItem()
+        self.title = webTitle
         loadUrl()
     }
     

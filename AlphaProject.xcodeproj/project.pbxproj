@@ -30,6 +30,11 @@
 		00572984289134A4008A4DC0 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00572983289134A4008A4DC0 /* Service.swift */; };
 		005729872892131C008A4DC0 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005729862892131C008A4DC0 /* NetworkManager.swift */; };
 		0057298E28926156008A4DC0 /* DealImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0057298D28926156008A4DC0 /* DealImageModel.swift */; };
+		005729922892887B008A4DC0 /* ProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005729912892887B008A4DC0 /* ProgressHUD.swift */; };
+		00572994289288C9008A4DC0 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00572993289288C9008A4DC0 /* Toast.swift */; };
+		005729972892891C008A4DC0 /* UIApplicationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005729962892891C008A4DC0 /* UIApplicationExtension.swift */; };
+		0057299928928938008A4DC0 /* UIKitExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0057299828928938008A4DC0 /* UIKitExtension.swift */; };
+		0057299B2893B18A008A4DC0 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0057299A2893B18A008A4DC0 /* ResultViewController.swift */; };
 		009E6600288B79AE00549C5A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009E65FF288B79AE00549C5A /* AppDelegate.swift */; };
 		009E6609288B79B100549C5A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 009E6608288B79B100549C5A /* Assets.xcassets */; };
 		009E660C288B79B100549C5A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 009E660A288B79B100549C5A /* LaunchScreen.storyboard */; };
@@ -61,6 +66,11 @@
 		00572983289134A4008A4DC0 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		005729862892131C008A4DC0 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		0057298D28926156008A4DC0 /* DealImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealImageModel.swift; sourceTree = "<group>"; };
+		005729912892887B008A4DC0 /* ProgressHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressHUD.swift; sourceTree = "<group>"; };
+		00572993289288C9008A4DC0 /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
+		005729962892891C008A4DC0 /* UIApplicationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplicationExtension.swift; sourceTree = "<group>"; };
+		0057299828928938008A4DC0 /* UIKitExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKitExtension.swift; sourceTree = "<group>"; };
+		0057299A2893B18A008A4DC0 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		009E65FC288B79AE00549C5A /* AlphaProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AlphaProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		009E65FF288B79AE00549C5A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		009E6608288B79B100549C5A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -182,6 +192,7 @@
 			children = (
 				009E6614288BC0E900549C5A /* MainViewController.swift */,
 				0057298128912E7A008A4DC0 /* AnalysisViewController.swift */,
+				0057299A2893B18A008A4DC0 /* ResultViewController.swift */,
 				0057297A288E6A22008A4DC0 /* DemoViewController.swift */,
 			);
 			path = Controller;
@@ -202,6 +213,32 @@
 				0057298D28926156008A4DC0 /* DealImageModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		0057298F28928854008A4DC0 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				005729902892886F008A4DC0 /* Toast */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		005729902892886F008A4DC0 /* Toast */ = {
+			isa = PBXGroup;
+			children = (
+				005729912892887B008A4DC0 /* ProgressHUD.swift */,
+				00572993289288C9008A4DC0 /* Toast.swift */,
+			);
+			path = Toast;
+			sourceTree = "<group>";
+		};
+		00572995289288F5008A4DC0 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				005729962892891C008A4DC0 /* UIApplicationExtension.swift */,
+				0057299828928938008A4DC0 /* UIKitExtension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		009E65F3288B79AD00549C5A = {
@@ -228,9 +265,11 @@
 				009E6618288BC3D200549C5A /* Application */,
 				0031439A288BCD54005AF9BA /* Base */,
 				009E6617288BC3C500549C5A /* Modules */,
+				0057298F28928854008A4DC0 /* Components */,
 				005729852892129B008A4DC0 /* Services */,
 				0031439D288BCDBD005AF9BA /* Tools */,
 				003143B6288BD1E2005AF9BA /* Utils */,
+				00572995289288F5008A4DC0 /* Extensions */,
 				003143A0288BCF62005AF9BA /* DesignKit */,
 				009E6616288BC3B400549C5A /* Resource */,
 				009E660D288B79B100549C5A /* Info.plist */,
@@ -417,8 +456,10 @@
 			files = (
 				003143A6288BD016005AF9BA /* UIColor+Palette.swift in Sources */,
 				00572984289134A4008A4DC0 /* Service.swift in Sources */,
+				005729922892887B008A4DC0 /* ProgressHUD.swift in Sources */,
 				003143AA288BD06A005AF9BA /* BaseTabBarController.swift in Sources */,
 				0057298E28926156008A4DC0 /* DealImageModel.swift in Sources */,
+				0057299B2893B18A008A4DC0 /* ResultViewController.swift in Sources */,
 				003143AF288BD11B005AF9BA /* UIView+ManualLayout.swift in Sources */,
 				003143B1288BD146005AF9BA /* CALayer+ManualLayout.swift in Sources */,
 				00572976288E65F6008A4DC0 /* BaseTableViewController.swift in Sources */,
@@ -430,6 +471,8 @@
 				00572979288E664E008A4DC0 /* Founctions.swift in Sources */,
 				005729872892131C008A4DC0 /* NetworkManager.swift in Sources */,
 				00572972288E43A9008A4DC0 /* BaseNavigationController.swift in Sources */,
+				00572994289288C9008A4DC0 /* Toast.swift in Sources */,
+				0057299928928938008A4DC0 /* UIKitExtension.swift in Sources */,
 				003143A2288BCF83005AF9BA /* Spacing.swift in Sources */,
 				003143BB288BD2D9005AF9BA /* CGRect+ManualLayout.swift in Sources */,
 				0057298228912E7A008A4DC0 /* AnalysisViewController.swift in Sources */,
@@ -439,6 +482,7 @@
 				00572974288E4424008A4DC0 /* BaseWebViewController.swift in Sources */,
 				0057297B288E6A22008A4DC0 /* DemoViewController.swift in Sources */,
 				003143A4288BCFD3005AF9BA /* UIFont+Typography.swift in Sources */,
+				005729972892891C008A4DC0 /* UIApplicationExtension.swift in Sources */,
 				0057297F288E6A9F008A4DC0 /* DemoCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -582,7 +626,7 @@
 				DEVELOPMENT_TEAM = 722UDCY8PL;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AlphaProject/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = ToonMe;
+				INFOPLIST_KEY_CFBundleDisplayName = "Cartoon Face";
 				INFOPLIST_KEY_NSCameraUsageDescription = "ToonMe请求访问您的摄像头";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "ToonMe请求访问您的麦克风";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "ToonMe 请求保存图片到相册";
@@ -603,7 +647,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -618,7 +662,7 @@
 				DEVELOPMENT_TEAM = 722UDCY8PL;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AlphaProject/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = ToonMe;
+				INFOPLIST_KEY_CFBundleDisplayName = "Cartoon Face";
 				INFOPLIST_KEY_NSCameraUsageDescription = "ToonMe请求访问您的摄像头";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "ToonMe请求访问您的麦克风";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "ToonMe 请求保存图片到相册";
@@ -639,7 +683,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

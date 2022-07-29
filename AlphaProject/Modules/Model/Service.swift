@@ -10,7 +10,9 @@ import Moya
 import UIKit
 
 enum MyService {
-    case dealImage(image: UIImage, type: String)
+    case cartoonImage(image: UIImage)
+    case pixarImage(image: UIImage, type: String)
+    case gameImage(image: UIImage)
 }
 
 extension MyService: TargetType {
@@ -20,8 +22,12 @@ extension MyService: TargetType {
     
     var path: String {
         switch self {
-        case .dealImage(_, _):
+        case .cartoonImage(_):
             return "api/v1/openapiadmin/volcengine/jPCartoon"
+        case .gameImage(_):
+            return "api/v1/openapiadmin/volcengine/gameCartoon3D"
+        case .pixarImage(_, _):
+            return "api/v1/openapiadmin/volcengine/potraitEffect"
         }
     }
     
@@ -35,7 +41,7 @@ extension MyService: TargetType {
     
     var task: Task {
         switch self {
-        case .dealImage(let image, _):
+        case .cartoonImage(let image):
             let formatter = DateFormatter()
             formatter.dateFormat = "yyyyMMddHHmmss"
             let str = formatter.string(from: Date())
@@ -45,7 +51,29 @@ extension MyService: TargetType {
                                                        name: "file",
                                                        fileName: fileName,
                                                        mimeType: "image/jpeg")
-        return .uploadCompositeMultipart([formData], urlParameters: ["cartoon_type": "classic_cartoon"])
+            return .uploadCompositeMultipart([formData], urlParameters: ["cartoon_type": "classic_cartoon"])
+        case .gameImage(let image):
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyyMMddHHmmss"
+            let str = formatter.string(from: Date())
+            let fileName = (str + ".png")
+            let imageData = image.jpegData(compressionQuality: 1)!
+            let formData = Moya.MultipartFormData.init(provider: .data(imageData),
+                                                       name: "file",
+                                                       fileName: fileName,
+                                                       mimeType: "image/jpeg")
+            return .uploadMultipart([formData])
+        case .pixarImage(image: let image, type: let type):
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyyMMddHHmmss"
+            let str = formatter.string(from: Date())
+            let fileName = (str + ".png")
+            let imageData = image.jpegData(compressionQuality: 1)!
+            let formData = Moya.MultipartFormData.init(provider: .data(imageData),
+                                                       name: "file",
+                                                       fileName: fileName,
+                                                       mimeType: "image/jpeg")
+            return .uploadCompositeMultipart([formData], urlParameters: ["type": type])
         }
     }
     

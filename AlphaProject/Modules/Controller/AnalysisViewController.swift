@@ -53,8 +53,33 @@ class AnalysisViewController: BaseViewController {
     override func bindEvent() {
         button.rx.tap.subscribe { [weak self] _ in
             guard let self = self else { return }
-            networkRequest(MyService.dealImage(image: self.image, type: self.type), modelType: DealImageModel.self) { dealImageModel, _ in
-                log.info(dealImageModel.image ?? "1234")
+            if (self.type == "game") {
+                networkRequest(MyService.gameImage(image: self.image), modelType: DealImageModel.self) { dealImageModel, _ in
+                    if (dealImageModel.image != nil) {
+                        guard let decodedData = Data(base64Encoded: dealImageModel.image!, options: Data.Base64DecodingOptions.init(rawValue: 0)) else { return }
+                        let image = UIImage(data: decodedData)
+                        let vc = ResultViewController(image: image!)
+                        self.navigationController?.pushViewController(vc, animated: true)
+                    }
+                }
+            } else if (self.type == "classic_cartoon") {
+                networkRequest(MyService.cartoonImage(image: self.image), modelType: DealImageModel.self) { dealImageModel, _ in
+                    if (dealImageModel.image != nil) {
+                        guard let decodedData = Data(base64Encoded: dealImageModel.image!, options: Data.Base64DecodingOptions.init(rawValue: 0)) else { return }
+                        let image = UIImage(data: decodedData)
+                        let vc = ResultViewController(image: image!)
+                        self.navigationController?.pushViewController(vc, animated: true)
+                    }
+                }
+            } else {
+                networkRequest(MyService.pixarImage(image: self.image, type: self.type), modelType: DealImageModel.self) { dealImageModel, _ in
+                    if (dealImageModel.image != nil) {
+                        guard let decodedData = Data(base64Encoded: dealImageModel.image!, options: Data.Base64DecodingOptions.init(rawValue: 0)) else { return }
+                        let image = UIImage(data: decodedData)
+                        let vc = ResultViewController(image: image!)
+                        self.navigationController?.pushViewController(vc, animated: true)
+                    }
+                }
             }
         }.disposed(by: disposeBag)
     }

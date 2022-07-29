@@ -16,14 +16,14 @@ class MainViewController: BaseViewController {
         super.viewDidLoad()
         self.title = "Cartoon Face"
         
-        let leftBar: UIBarButtonItem = configure(.init(title: "menu", style: .done, target: nil, action: nil)) {_ in
+        let rightBar: UIBarButtonItem = configure(.init(title: "policy", style: .done, target: nil, action: nil)) {_ in
         }
         
-        leftBar.rx.tap.subscribe { [weak self] _ in
-            self?.navigationController?.pushViewController(BaseWebViewController(url: "https://www.baidu.com"), animated: true)
+        rightBar.rx.tap.subscribe { [weak self] _ in
+            self?.navigationController?.pushViewController(BaseWebViewController(url: "https://factoryofapp.com/cartoon_face/privacy_statement.html", title: "privacy policy"), animated: true)
         }.disposed(by: disposeBag)
         
-        self.navigationItem.leftBarButtonItem = leftBar
+        self.navigationItem.rightBarButtonItem = rightBar
     }
     
     override func setupUI() {
@@ -60,15 +60,15 @@ class MainViewController: BaseViewController {
     override func bindEvent() {
         super.bindEvent()
         firstButton.rx.tap.subscribe { _ in
-            self.chooseImage("cartoon")
+            self.chooseImage("classic_cartoon")
         }.disposed(by: disposeBag)
         
         secondButton.rx.tap.subscribe { _ in
-            self.chooseImage("3D")
+            self.chooseImage("pixar")
         }.disposed(by: disposeBag)
         
         thirdButton.rx.tap.subscribe { _ in
-            self.chooseImage("angle")
+            self.chooseImage("angel")
         }.disposed(by: disposeBag)
         
         fourthButton.rx.tap.subscribe { _ in
@@ -109,18 +109,22 @@ class MainViewController: BaseViewController {
     }
     
     private lazy var firstButton: UIButton = configure(.init(frame: .zero)) {
-        $0.backgroundColor = .yellow
+        $0.adjustsImageWhenHighlighted = false
+        $0.setImage(UIImage(named: "firstIcon"), for: .normal)
     }
     
     private lazy var secondButton: UIButton = configure(.init(frame: .zero)) {
-        $0.backgroundColor = .red
+        $0.adjustsImageWhenHighlighted = false
+        $0.setImage(UIImage(named: "secondIcon"), for: .normal)
     }
     
     private lazy var thirdButton: UIButton = configure(.init(frame: .zero)) {
-        $0.backgroundColor = .green
+        $0.adjustsImageWhenHighlighted = false
+        $0.setImage(UIImage(named: "thirdIcon"), for: .normal)
     }
     
     private lazy var fourthButton: UIButton = configure(.init(frame: .zero)) {
-        $0.backgroundColor = .blue
+        $0.adjustsImageWhenHighlighted = false
+        $0.setImage(UIImage(named: "fourthIcon"), for: .normal)
     }
 }

@@ -65,6 +65,8 @@ def tool_pods
   pod 'ESPullToRefresh', '~> 2.9.3'
   # Memory Leak
   pod 'MLeaksFinder', '~> 1.0.0', :configurations => ['Debug']
+  # Ads
+  pod 'Google-Mobile-Ads-SDK'
 end
 
 target 'AlphaProject' do

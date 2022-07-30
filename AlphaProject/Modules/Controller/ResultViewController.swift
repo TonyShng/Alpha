@@ -110,20 +110,24 @@ class ResultViewController: BaseViewController {
     private let homeButton: UIButton = configure(.init(frame: .zero)) {
         $0.adjustsImageWhenHighlighted = false
         $0.setImage(UIImage(named: "homeIcon"), for: .normal)
+        $0.imageView?.contentMode = .scaleAspectFit
     }
     
     private let againButton: UIButton = configure(.init(frame: .zero)) {
         $0.adjustsImageWhenHighlighted = false
         $0.setImage(UIImage(named: "againIcon"), for: .normal)
+        $0.imageView?.contentMode = .scaleAspectFit
     }
     
     private let downButton: UIButton = configure(.init(frame: .zero)) {
         $0.adjustsImageWhenHighlighted = false
         $0.setImage(UIImage(named: "downIcon"), for: .normal)
+        $0.imageView?.contentMode = .scaleAspectFit
     }
     
     private let shareButton: UIButton = configure(.init(frame: .zero)) {
         $0.adjustsImageWhenHighlighted = false
         $0.setImage(UIImage(named: "shareIcon"), for: .normal)
+        $0.imageView?.contentMode = .scaleAspectFit
     }
 }

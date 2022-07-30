@@ -7,9 +7,11 @@
 
 import UIKit
 import RxSwift
+import GoogleMobileAds
 
 class BaseViewController: UIViewController {
     var disposeBag = DisposeBag()
+    private var rewardedAd: GADRewardedAd?
     
     // MARK: Properties
     lazy private(set) var className: String = {
@@ -77,6 +79,37 @@ class BaseViewController: UIViewController {
         super.updateViewConstraints()
     }
     
+    // MARK: 广告
+    func gainAds() {
+        let request = GADRequest()
+        GADRewardedAd.load(withAdUnitID: "ca-app-pub-8691308785296319/4157494324", request: request) { [self] ad, error in
+            if let error = error {
+                log.debug(error)
+                self.adsNotReady()
+                return
+            }
+            self.rewardedAd = ad
+            self.rewardedAd?.fullScreenContentDelegate = self
+            self.showAds()
+        }
+    }
+    
+    private func showAds() {
+        if rewardedAd != nil {
+            rewardedAd?.present(fromRootViewController: self, userDidEarnRewardHandler: {
+                _ = self.rewardedAd?.adReward
+            })
+        } else {
+            self.adsNotReady()
+        }
+    }
+    
+    func adsNotReady() {
+    }
+    
+    func adsDismiss() {
+    }
+    
     // MARK: 子类覆写
     /// 子类覆写设置视图约束
     func setupUI() {
@@ -95,5 +128,16 @@ class BaseViewController: UIViewController {
     /// 子类覆写初始化数据
     func setupData() {
     }
+}
 
+extension BaseViewController: GADFullScreenContentDelegate {
+    func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
+    }
+    
+    func adWillPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+    }
+    
+    func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+        adsDismiss()
+    }
 }

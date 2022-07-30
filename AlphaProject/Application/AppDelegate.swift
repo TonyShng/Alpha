@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import GoogleMobileAds
 
 // swiftlint:disable force_cast
 let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -21,8 +22,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = UIWindow(frame: UIScreen.main.bounds)
         self.window!.backgroundColor = .white
         self.window!.makeKeyAndVisible()
-        
         self.window!.rootViewController = BaseNavigationController(rootViewController: MainViewController())
+        
+        GADMobileAds.sharedInstance().start(completionHandler: nil)
+        
         return true
     }
 }
